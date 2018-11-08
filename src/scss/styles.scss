@@ -2,7 +2,7 @@
 
 $defaultFont: 'Roboto', sans-serif;
 $defaultColor: #232323;
-$defaultShadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+$defaultShadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.35);
 
 * {
     font-family: $defaultFont;
@@ -45,6 +45,11 @@ input, div, canvas {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+    border-radius: 4px;
+}
+
+select, button {
+    border-radius: 3px;
 }
 
 select#difficulty {
@@ -53,7 +58,7 @@ select#difficulty {
     margin-right: auto;
     margin-bottom: 20px;
     width: 100%;
-    padding: 10px 30px;
+    padding: 10px 15px;
     font-size: 20px;
     color: $defaultColor;
     box-shadow: $defaultShadow;
@@ -109,8 +114,9 @@ input#guess {
             animation: fadein 2s;
 }
 
-button#startGame {
+button {
     padding: 20px 30px;
+    margin-bottom: 20px;
     font-size: 30px;
     width: 100%;
     color: $defaultColor;
@@ -126,7 +132,7 @@ button#startGame {
             animation: fadein 2s;
 }
 
-button#startGame:hover
+button:hover
 {
     cursor: pointer;
 }
