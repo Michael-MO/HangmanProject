@@ -20,9 +20,9 @@ export class SecretWord
         return this.theWord;
     }
 
-    trimQuotes(string: string): string    
+    public letters(): Array<string>
     {
-        return string.replace(/['"]+/g, '');
+        return this.theWord.split("");
     }
 
     async getRandomWord()
@@ -51,10 +51,5 @@ export class SecretWord
 
         this.theWord = newWord;
         console.log(newWord);
-    }
-
-    async doStuff()
-    {
-        await this.getRandomWord();
     }
 }

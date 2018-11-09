@@ -7,12 +7,6 @@ export class Hangman
 
     constructor()
     {
-        this.drawHead();
-        this.drawBody();
-        this.drawLeftArm();
-        this.drawRightArm();
-        this.drawLeftLeg();
-        this.drawRightLeg();
     }
 
     private drawHelper()
