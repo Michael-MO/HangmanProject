@@ -1,4 +1,3 @@
-
 export class Hangman
 {
     private canvasElement: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas");
@@ -9,55 +8,55 @@ export class Hangman
     {
     }
 
-    private drawHelper()
+    private DrawHelper()
     {
         this.ctx.lineWidth = this.lineWidth;
         this.ctx.stroke();
     }
 
-    private drawHead()
+    public DrawHead()
     {
         this.ctx.ellipse(245, 65, 15, 15, Math.PI / 4, 0, 2 * Math.PI);        
-        this.drawHelper();
+        this.DrawHelper();
     }
 
-    private drawBody()
+    public DrawBody()
     {
         this.ctx.beginPath();
         this.ctx.moveTo(245, 80);
         this.ctx.lineTo(245, 145);
-        this.drawHelper();
+        this.DrawHelper();
     }
 
-    private drawLeftArm()
+    public DrawLeftArm()
     {
         this.ctx.beginPath();
         this.ctx.moveTo(245, 90);
         this.ctx.lineTo(215, 130);
-        this.drawHelper();
+        this.DrawHelper();
     }
 
-    private drawRightArm()
+    public DrawRightArm()
     {
         this.ctx.beginPath();
         this.ctx.moveTo(245, 90);
         this.ctx.lineTo(275, 130);
-        this.drawHelper();
+        this.DrawHelper();
     }
 
-    private drawLeftLeg()
+    public DrawLeftLeg()
     {
         this.ctx.beginPath();
         this.ctx.moveTo(245, 145);
         this.ctx.lineTo(225, 205);
-        this.drawHelper();
+        this.DrawHelper();
     }
 
-    private drawRightLeg()
+    public DrawRightLeg()
     {
         this.ctx.beginPath();
         this.ctx.moveTo(245, 145);
         this.ctx.lineTo(265, 205);
-        this.drawHelper();
+        this.DrawHelper();
     }
 }

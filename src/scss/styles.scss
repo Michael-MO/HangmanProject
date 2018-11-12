@@ -37,6 +37,13 @@ span.letterBox {
     display: inline-block;
 }
 
+span.spaceBox {
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 25px;
+    display: inline-block;
+}
+
 span.letterBox:empty:before {
     content: "\200b"; // unicode zero width space character
   }
@@ -71,6 +78,14 @@ select#difficulty {
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
+}
+
+div#guessList {
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
 div#word {
@@ -134,7 +149,12 @@ button {
 
 button:hover
 {
+    background-color: #ebebeb;
     cursor: pointer;
+}
+
+button:active {
+    background-color: #dedede;
 }
 
 canvas {

@@ -8,6 +8,7 @@ btnStartGame.addEventListener("click", StartGame);
 
 // After Start
 let divWord: HTMLDivElement;
+let divGuessList: HTMLDivElement;
 let inputGuess: HTMLInputElement;
 let btnGuess: HTMLButtonElement;
 let canvasElement: HTMLCanvasElement;
@@ -15,11 +16,14 @@ let canvasElement: HTMLCanvasElement;
 
 function DoFancyWord(parent: HTMLDivElement, string: string)
 {
-    splitWord(string).forEach(function(value, i)
+    SplitWord(string).forEach(function(value, i)
     {
         let letterBox: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
         letterBox.setAttribute("id", i.toString());
-        letterBox.setAttribute("class", "letterBox");
+        if(value == " ")
+        { letterBox.setAttribute("class", "spaceBox"); }
+        else
+        { letterBox.setAttribute("class", "letterBox"); }
         parent.appendChild(letterBox);
     });
 }
@@ -30,16 +34,20 @@ async function StartGame(Event :MouseEvent)
     div.innerText = "";
 
     let NewSecretWord: SecretWord = new SecretWord(1, 10, 8);
-    await NewSecretWord.getRandomWord();
-    SetupWord(NewSecretWord.word());
+    await NewSecretWord.GetRandomWord();
+    SetupWord(NewSecretWord.Word());
     let hangman: Hangman = new Hangman();
     let guess: Guess = new Guess(NewSecretWord);
-    btnGuess.addEventListener("click", function(){
-        divWord.innerText = guess.Guesses();
+    btnGuess.addEventListener("click", function()
+    {
+        guess.DoGuess(inputGuess.value);
+        divGuessList.innerText = guess.ShowGuesses();
+        inputGuess.value = "";
+        inputGuess.focus();
     });
 }
 
-function splitWord(string: string): string[]
+function SplitWord(string: string): string[]
 {
     return string.split("");
 }
@@ -51,14 +59,20 @@ function SetupWord(string: string): void
     div.appendChild(divWord);
     DoFancyWord(divWord, string);
 
+    divGuessList = document.createElement("div");
+    divGuessList.setAttribute("id", "guessList");    
+    div.appendChild(divGuessList);
+
     inputGuess = document.createElement("input");
     inputGuess.setAttribute("id", "guess");
     inputGuess.setAttribute("placeholder", "Start Guessing..");
+    inputGuess.setAttribute("maxlength", "1");
+    inputGuess.setAttribute("type", "text");
     div.appendChild(inputGuess);
 
     btnGuess = document.createElement("button");
     btnGuess.setAttribute("id", "btnGuess");
-    btnGuess.innerText = "Make A Guess";
+    btnGuess.appendChild(document.createElement("i")).setAttribute("class", "fas fa-check");
     div.appendChild(btnGuess);
 
     canvasElement = document.createElement("canvas");

@@ -15,17 +15,17 @@ export class SecretWord
         this.minLength = minLength;
     }
 
-    public word(): string
+    public Word(): string
     {
         return this.theWord;
     }
 
-    public letters(): Array<string>
+    public Letters(): Array<string>
     {
         return this.theWord.split("");
     }
 
-    async getRandomWord()
+    async GetRandomWord()
     {
         let newWord: string;
 
